@@ -4,13 +4,13 @@ import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.ui.set
 import org.springframework.web.bind.annotation.*
-import org.springframework.amqp.core.AmqpTemplate
+import org.springframework.amqp.rabbit.core.RabbitTemplate
 import org.springframework.beans.factory.annotation.Autowired
 
 @Controller
 class HtmlController {
     @Autowired
-    var template: AmqpTemplate? = null
+    var template: RabbitTemplate? = null
 
     @GetMapping("/index", "/")
     fun page(model: Model): String {
@@ -22,7 +22,8 @@ class HtmlController {
     @PostMapping("/index")
     fun pageSubmit(model: Model, @ModelAttribute data: DataObject): String {
         model["data"] = data
-        template?.convertAndSend("queue", toJson(data))
-        return "success"
+        template?.setExchange("exchange")
+        template?.convertAndSend(toJson(data))
+        return "index"
     }
 }
