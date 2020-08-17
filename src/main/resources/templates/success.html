@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title th:text="${title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<p> Successful! </p>
+<p th:text="'Username ' + ${data.userName}"></p>
+<p th:text="'Email ' + ${data.userEmail}"></p>
+<p th:text="'Topic ' + ${data.topic}"></p>
+<p th:text="'Message ' + ${data.message}"></p>
+<a href="/">Go back.</a>
+</body>
+</html>

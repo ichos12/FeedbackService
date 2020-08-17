@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title th:text="${title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <form action="#" th:action="@{/index}" th:object="${data}" method="post">
+        <label for="username">Username: </label>
+        <input type="text" id="username" name="userName" th:field="*{userName}">
+
+        <label for="email">Email: </label>
+        <input type="email" id="email" name="userEmail" th:field="*{userEmail}">
+
+        <label for="topic">Topic: </label>
+        <input type="text" id="topic" name="topic" th:field="*{topic}">
+
+        <label for="message">Message: </label>
+        <textarea id="message" name="message" th:field="*{message}"></textarea>
+
+        <button type="submit">Send message</button>
+    </form>
+</body>
+</html>
